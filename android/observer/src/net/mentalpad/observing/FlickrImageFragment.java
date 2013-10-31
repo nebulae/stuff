@@ -34,23 +34,27 @@ public class FlickrImageFragment extends Fragment implements Observer {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		// register ourself with the ImageDataSource - because it's observable
 		ImageDataSource.getInstance(getActivity()).addObserver(this);
 	}
 	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		// remember to unregister... 
 		ImageDataSource.getInstance(getActivity()).deleteObserver(this);
 	}
 	
+	// gets called from the observable.  it's like magic.  
 	@Override
 	public void update(Observable observable, Object data) {
 		
+		// ooh, fancy. 
 		final Animation anim_out = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out); 
 	    final Animation anim_in  = AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in); 
 		final ImageView imageView = (ImageView)getView().findViewById(R.id.image);
 
-
+		// network calls always on a seperate thread! 
 		new AsyncTask<String, Void, Bitmap>() {
 
 			@Override
@@ -70,7 +74,7 @@ public class FlickrImageFragment extends Fragment implements Observer {
 			
 			
 			protected void onPostExecute(final Bitmap result) {
-
+				// do the fancy animation
 				anim_out.setAnimationListener(new AnimationListener() {
 			        @Override public void onAnimationStart(Animation animation) {} // don't care
 			        @Override public void onAnimationRepeat(Animation animation) {} // don't care

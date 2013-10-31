@@ -34,11 +34,13 @@ public class FlickrImageCollection extends ArrayList<FlickrImage> {
 	}
 	
 	public FlickrImage getRandomImage(){
+		// return any one we want. 
 		return get(rand.nextInt(this.size()));
 	}
 	
 	private void parseFromJson(Context context) throws IOException{
 
+		// open the json file we saved 
 		InputStream is = context.getResources().openRawResource(R.raw.interesting_images);
 		Writer writer = new StringWriter();
 		char[] buffer = new char[1024];
@@ -57,9 +59,10 @@ public class FlickrImageCollection extends ArrayList<FlickrImage> {
 		}
 		
 		Gson gson= new Gson();
+		// create an array of the objects from json, 
 		FlickrImage[] images = gson.fromJson( writer.toString(),  FlickrImage[].class);
+		// and add them all to myself.
 		addAll(Arrays.asList(images));
-		
 	}
 	
 

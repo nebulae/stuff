@@ -10,7 +10,7 @@ public class FlickrImage {
 	public String title;
 
 	public String imageUrl(){
-		return "http://farm" + farm +".static.flickr.com/" + server + "/" + id + "_" + secret + "_" + "m.jpg";
+		return String.format("http://farm%s.static.flickr.com/%s/%s_%s_m.jpg", farm, server, id, secret);	
 	}
 	
 }
