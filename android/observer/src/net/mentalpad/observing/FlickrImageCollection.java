@@ -10,19 +10,17 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 import android.content.Context;
-import android.util.SparseArray;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
 public class FlickrImageCollection extends ArrayList<FlickrImage> {
 	
-	/**
-	 * 
-	 */
+	private static final String TAG = FlickrImageCollection.class.getSimpleName();
+
 	private static final long serialVersionUID = 378341827411865971L;
 	private Random rand;
 
@@ -31,8 +29,7 @@ public class FlickrImageCollection extends ArrayList<FlickrImage> {
 		try {
 			parseFromJson(context);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e(TAG, "parsing the json didn't work. ", e);
 		}
 	}
 	
@@ -41,7 +38,7 @@ public class FlickrImageCollection extends ArrayList<FlickrImage> {
 	}
 	
 	private void parseFromJson(Context context) throws IOException{
-		
+
 		InputStream is = context.getResources().openRawResource(R.raw.interesting_images);
 		Writer writer = new StringWriter();
 		char[] buffer = new char[1024];
@@ -52,15 +49,12 @@ public class FlickrImageCollection extends ArrayList<FlickrImage> {
 		        writer.write(buffer, 0, n);
 		    }
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e(TAG, "Encoding needs some attention", e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e(TAG, "IO no worky.", e);
 		} finally {
 		    is.close();
 		}
-
 		
 		Gson gson= new Gson();
 		FlickrImage[] images = gson.fromJson( writer.toString(),  FlickrImage[].class);

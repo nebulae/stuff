@@ -10,7 +10,6 @@ import java.util.Observer;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,10 +55,9 @@ public class FlickrImageFragment extends Fragment implements Observer {
 
 			@Override
 			protected Bitmap doInBackground(String... params) {
-				URL url;
 				Bitmap b = null;
 				try {
-					url = new URL(params[0]);
+					URL url = new URL(params[0]);
 					InputStream is = url.openConnection().getInputStream();
 					b = BitmapFactory.decodeStream(is);
 				} catch (MalformedURLException e) {
@@ -74,9 +72,9 @@ public class FlickrImageFragment extends Fragment implements Observer {
 			protected void onPostExecute(final Bitmap result) {
 
 				anim_out.setAnimationListener(new AnimationListener() {
-			        @Override public void onAnimationStart(Animation animation) {}
-			        @Override public void onAnimationRepeat(Animation animation) {}
-			        @Override public void onAnimationEnd(Animation animation)
+			        @Override public void onAnimationStart(Animation animation) {} // don't care
+			        @Override public void onAnimationRepeat(Animation animation) {} // don't care
+			        @Override public void onAnimationEnd(Animation animation) // care
 			        {
 			        	imageView.setImageBitmap(result); 
 			            anim_in.setAnimationListener(new AnimationListener() {
@@ -87,6 +85,7 @@ public class FlickrImageFragment extends Fragment implements Observer {
 			            imageView.startAnimation(anim_in);
 			        }
 			    });
+				
 			    imageView.startAnimation(anim_out);
 			};
 			
