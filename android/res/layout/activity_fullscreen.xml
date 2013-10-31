@@ -1,0 +1,83 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".FullscreenActivity" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+	<GridLayout 
+        android:id="@+id/fullscreen_content"
+		android:rowCount="6"
+		android:scrollbars="vertical"
+		android:alignmentMode="alignBounds"
+		android:columnCount="3" 
+   		android:layout_width="match_parent"
+   		
+   		android:layout_height="match_parent">
+	    
+	    
+	    <fragment android:id="@+id/flickr_image_1" android:layout_row="0" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_2" android:layout_row="0" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_3" android:layout_row="0" android:layout_column="2" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    
+	    <fragment android:id="@+id/flickr_image_4" android:layout_row="1" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_5" android:layout_row="1" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_6" android:layout_row="1" android:layout_column="2" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    
+	    <fragment android:id="@+id/flickr_image_7" android:layout_row="2" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_8" android:layout_row="2" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_9" android:layout_row="2" android:layout_column="2" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    
+	    <fragment android:id="@+id/flickr_image_10" android:layout_row="3" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_11" android:layout_row="3" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_12" android:layout_row="3" android:layout_column="2" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    	    	    
+	    <fragment android:id="@+id/flickr_image_13" android:layout_row="4" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_14" android:layout_row="4" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_15" android:layout_row="4" android:layout_column="2" class="net.mentalpad.observing.FlickrImageFragment"/>
+
+	    <fragment android:id="@+id/flickr_image_16" android:layout_row="5" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_17" android:layout_row="5" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    <fragment android:id="@+id/flickr_image_18" android:layout_row="5" android:layout_column="2" class="net.mentalpad.observing.FlickrImageFragment"/>
+	    
+	    
+	</GridLayout>
+   
+     
+    <!--
+         This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows.
+    -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" >
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+
+            <Button
+                android:id="@+id/dummy_button"
+                style="?buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dummy_button" />
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>
