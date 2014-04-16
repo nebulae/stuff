@@ -18,9 +18,10 @@
 		android:alignmentMode="alignBounds"
 		android:columnCount="3" 
    		android:layout_width="match_parent"
-   		
    		android:layout_height="match_parent">
-	    
+
+	
+	<!-- please dont actually do this.  create the fragments programatically instead of what you see below, which is here in this format for demonstration purposes only.  -->	    
 	    
 	    <fragment android:id="@+id/flickr_image_1" android:layout_row="0" android:layout_column="0" class="net.mentalpad.observing.FlickrImageFragment"/>
 	    <fragment android:id="@+id/flickr_image_2" android:layout_row="0" android:layout_column="1" class="net.mentalpad.observing.FlickrImageFragment"/>
